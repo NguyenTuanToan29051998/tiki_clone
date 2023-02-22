@@ -1,0 +1,264 @@
+.wrapper {
+  background-color: #fff;
+  z-index: 10;
+  transition: .5s;
+  max-width: 1440px;;
+  margin: 0 auto;
+  padding: 8px 0px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    flex: 1 1 auto;
+
+    .leftArea {
+      display: flex;
+      cursor: pointer;
+      width: 58%;
+
+      &Mainlogo {
+        margin-right: 1.125rem;
+        display: flex;
+      }
+
+      .formSearch {
+        width: 100%;
+        display: flex;
+        position: relative;
+        border: 1px solid rgb(221, 221, 227);
+        border-radius: 8px;
+        -webkit-box-align: center;
+        align-items: center;
+
+        .iconSearch {
+          width: 20px;
+          height: 20px;
+          margin: 0px 0px 0px 18px;
+        }
+
+        .searchInput {
+          border: 0px;
+          padding: 0px 8px;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 150%;
+          border-top-left-radius: 8px;
+          border-bottom-left-radius: 8px;
+          flex: 1 1 0%;
+          outline: none;
+          border-right: 1px solid #dddde3;
+        }
+
+        .searchBtn {
+          cursor: pointer;
+          border: 0px;
+          width: 92px;
+          height: 38px;
+          padding: 4px;
+          border-radius: 0px 8px 8px 0px;
+          background: transparent;
+          color: rgb(10, 104, 255);
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 150%;
+          outline: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+        }
+      }
+    }
+
+    .rightArea {
+      display: flex;
+      .menuItem {
+        display: flex;
+        gap: 0.25rem;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        padding: 8px 16px;
+        cursor: pointer;
+        position: relative;
+        border-radius: 8px;
+        &:hover {
+          background-color: rgba(0, 96, 255, 0.12);
+        }
+      }
+
+      .homeText {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 150%;
+        color: rgb(10, 104, 255);
+        margin-bottom: 0;
+      }
+
+      .product {
+        display: flex;
+        align-items: center;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 150%;
+        color: rgb(128, 128, 137);
+        margin-bottom: 0;
+        padding-right: 0.5rem;
+      }
+
+      .cart {
+        padding-left: 1.25rem;
+        border-left: 2px solid #ebebf0;
+        position: relative;
+
+        .cartIcon {
+          display: flex;
+          cursor: pointer;
+
+          .qtyCart {
+              color: rgb(255, 255, 255);
+              background: rgb(255, 66, 79);
+              height: 16px;
+              right: -5px;
+              top: -7px;
+              border-radius: 8px;
+              display: inline-block;
+              text-align: center;
+              font-weight: 700;
+              font-size: 10px;
+              line-height: 150%;
+              position: absolute;
+              padding: 0.5px 4px;
+          }
+        }
+
+        .cartNotification {
+          position: absolute;
+          bottom: -15px;
+          right: 0px;
+          padding: 16px;
+          transform: translateY(100%);
+          background-color: rgb(255, 255, 255);
+          border-radius: 6px;
+          box-shadow: rgb(179 179 179) 1px 1px 15px;
+
+          &::before {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            right: 15px;
+            border-width: 8px;
+            border-style: solid;
+            border-color: transparent transparent rgb(255, 255, 255);
+            border-image: initial;
+          }
+
+          .btnClose {
+            cursor: pointer;
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            padding: 4px;
+            color: rgb(155, 155, 155);
+            font-size: 11px;
+          }
+
+          .status {
+            display: flex;
+            gap: 0.5rem;
+            -webkit-box-align: center;
+            align-items: center;
+            margin: 0px;
+            color: rgb(51, 51, 51);
+            font-size: 13px;
+            white-space: nowrap;
+          }
+
+          .btnViewCart {
+            display: block;
+            margin-top: 16px;
+            padding: 10px 0px;
+            width: 240px;
+            color: rgb(255, 255, 255);
+            font-size: 14px;
+            font-weight: 400;
+            text-align: center;
+            white-space: nowrap;
+            background-color: rgb(255, 57, 69);
+            border-radius: 4px;
+            cursor: pointer;
+          }
+        }
+
+        .hiddenBtnViewCart {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .quickLink {
+    display: flex;
+    gap: 1rem;
+    margin-left: 138px;
+    margin-top: 0.5rem;
+    &Item {
+      display: block;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 150%;
+      color: rgb(128, 128, 137);
+      // margin-right: 12px;
+      white-space: nowrap;
+      margin-bottom: 0;
+      cursor: pointer;
+    }
+  }
+}
+
+.stiky {
+  position: inherit;
+}
+
+.navContainer {
+  background-color: #fff;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  transition: .5s;
+  z-index: 9;
+  box-shadow: rgba(149, 157, 165, 0.1) 0px 16px 24px;
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 1 auto;
+    max-width: calc(var(--max-width-container) - 11rem);
+    margin: 0 auto;
+
+    .bntAreaMobile {
+      display: none;
+
+      .button {
+        background: var(--primary);
+        font-weight: 600;
+        font-size: 1rem;
+        padding: 1rem 1.3rem;
+        line-height: 19px;
+        width: 100%;
+        text-align: center;
+        color: white;
+        border: none;
+        cursor: pointer;
+        text-transform: uppercase;
+        padding: 1.25rem 1.5rem;
+      }
+    }
+  }
+}
