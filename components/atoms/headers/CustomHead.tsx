@@ -12,11 +12,11 @@ const CustomHead: NextPage<PropsType> = (props) => {
 
   return (
     <Head>
-      <title>{title ? `${title} | TiKi - mua hàng online` : 'TiKi - mua hàng online'}</title>
-      <link rel="icon" href="/assets/logo.jpg" />
+      <title>Top giảm giá online</title>
+      <link rel="icon" href="/assets/logo-topgiamgia-vuong.png" />
       <meta property="og:type" content="article" />
-      <meta property="og:title" content="ISEECOVID" />
-      <meta property="og:image" content="https://iseecovid.rikaidev.cf/assets/LOGO-PARTNER-01.svg" />
+      <meta property="og:title" content="Top giảm giá online" />
+      <meta property="og:image" content="https://topgiamgia.vn/wp-content/uploads/2023/01/logo-topgiamgia-vuong.png" />
     </Head>
   );
 };

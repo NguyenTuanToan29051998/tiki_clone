@@ -52,7 +52,11 @@ const HomeBody: FC<PropTypes> = (props) => {
     axios.get(`https://tiki.vn/api/personalish/v1/blocks/listings?category=${cateId}&limit=100&sort=top_seller`)
       .then(res => {
         setNumberSelected(0);
-        setProductList(res.data.data);
+        try{
+          setProductList(res.data.data.sort((a, b) => parseInt(b.quantity_sold.value) - parseInt(a.quantity_sold.value)));
+        }catch{
+          setProductList(res.data.data);
+        }
       });
   };
 
@@ -60,6 +64,8 @@ const HomeBody: FC<PropTypes> = (props) => {
     switch (numberTab) {
       case 0:
         setProductsListBySearch(productList);
+        //setProductsListBySearch(productList.sort((a, b) => b.quantity_sold.value - a.quantity_sold.value));
+        //setIsShowDropdown(true);
         break;
       case 1: {
         let result: ProductByCategoryType[] = [];
@@ -92,6 +98,12 @@ const HomeBody: FC<PropTypes> = (props) => {
         break;
     }
     setNumberSelected(numberTab);
+  };
+
+  const handleSelectedSortSale = (event: any, isLowToHigh: boolean) => {
+    if (event) event.stopPropagation();
+    setProductsListBySearch([...productList.sort((a, b) => (!isLowToHigh ? (a.quantity_sold.value - b.quantity_sold.value) : (b.quantity_sold.value - a.quantity_sold.value)))]);
+    setIsShowDropdown(false);
   };
 
   const handleSelectedSortDiscountRate = (event: any, isLowToHigh: boolean) => {
@@ -237,7 +249,13 @@ const HomeBody: FC<PropTypes> = (props) => {
                   onClick={() => handleSelectedTab(0)}
                   role="presentation"
                 >
-                  Tất cả
+                  Top bán chạy
+                  {numberSelected === 0 && isShowDropdown && (
+                    <div className={styles.searchAutocomplete}>
+                      <div className={styles.itemSearch} onClick={(e) => handleSelectedSortSale(e, false)} role="presentation">Đã bán từ thấp đến cao</div>
+                      <div className={styles.itemSearch} onClick={(e) => handleSelectedSortSale(e, true)} role="presentation">Đã bán từ cao xuống thấp</div>
+                    </div>
+                  )}
                 </div>
                 {numberSelected === 0 && <div className={styles.underlined} />}
               </div>
@@ -348,9 +366,6 @@ const HomeBody: FC<PropTypes> = (props) => {
             </div>
           )}
         </div>
-      </div>
-      <div className="mt-5">
-        <PaginationSection currentPage={currentPage} pageCount={pageCount} setCurrentPage={setCurrentPage} />
       </div>
     </div>
   );

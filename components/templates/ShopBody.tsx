@@ -28,7 +28,6 @@ const ShopBody: FC<PropTypes> = (props) => {
   useEffect(() => {
     axios.get(`https://publisher-api.masoffer.net/offer/pushsale?pub_id=godshades&token=bGVzYXV0aGplbnRodUBnbWFpbC5jb20%3D&date=${formatShortDate(new Date().toString())}%2000%3A00%3A00`)
       .then(res => {
-        console.log(res.data, 'xxx');
         setProductList(res.data.data);
       });
   }, []);

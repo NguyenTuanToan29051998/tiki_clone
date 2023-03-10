@@ -216,8 +216,8 @@ const WebsiteBody: FC<PropTypes> = (props) => {
             <div className="m-4">Chưa có sản phẩm phù hợp</div>
           ) : (
             <div className={styles.productList}>
-              {(productList || []).filter(val => val.domain).map((item, index) => (
-                <div className={styles.productItem} onClick={() => window.open(`https://rutgon.me/v0/6cCVQOqXuLRPfEq0tRR9nw?url=${!item.domain.includes("https://") && "https://"}${item.domain}`)} role="presentation" key={index}>
+              {(productList || []).filter(val => val.domain && val.avatar).map((item, index) => (
+                <div className={styles.productItem} onClick={() => window.open(`https://rutgon.me/v0/6cCVQOqXuLRPfEq0tRR9nw?url=${!item.domain.includes("https://") ? "https://" : ""}${item.domain}`)} role="presentation" key={index}>
                   <div className="position-relative">
                     {/* {item.badges_new.some(item => item.code === 'official_store') && (
                       <div className={styles.official} style={{ backgroundImage: `url("/assets/brand-2.jpg")` }} />

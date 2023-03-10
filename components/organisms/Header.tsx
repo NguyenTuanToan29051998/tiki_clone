@@ -3,6 +3,9 @@ import { useRouter } from 'next/router';
 import { FC, useEffect, useState } from 'react';
 import styles from '../../styles/components/organisms/Header.module.scss';
 import { checkGreenIcon1, closeIcon, favoriteGrayIcon } from '../../public/icons';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
 type PropsType = {
 
@@ -55,100 +58,26 @@ const Header: FC<PropsType> = (props) => {
           <div className={styles.leftArea}>
             <div className={styles.leftAreaMainlogo} onClick={() => router.push('/home')} role="presentation">
               <Image
-                src="/assets/logo.jpg"
-                width={66}
-                height={40}
+                src="/assets/logo-topgiamgia-vuong.png"
+                width={60}
+                height={60}
                 alt="main-logo"
               />
-              {/* <div>TOP100</div> */}
             </div>
-            <div className={styles.formSearch}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className={styles.iconSearch} src="/assets/img-search.png" alt="icon-search" />
-              <input
-                className={styles.searchInput}
-                placeholder="Bạn tìm gì hôm nay"
-                value={inputSearch}
-                onKeyDown={(e) => handleSearch(e)}
-                onChange={(e) => handleSearch(e)}
-              />
-              <button
-                className={styles.searchBtn}
-                onClick={() => router.push(`${!inputSearch.trim() ? '' : `/product?searchInput=${inputSearch}`}`, undefined, { shallow: true })}
-              >
-                Tìm kiếm
-              </button>
-            </div>
+            <Navbar bg="light" expand="lg">
+              <Container>
+                <Navbar.Brand onClick={() => router.push('/')}>Trang chủ</Navbar.Brand>
+                <Navbar.Brand onClick={() => router.push('/website')}>Website liên kết</Navbar.Brand>
+                <Navbar.Brand onClick={() => router.push('/shop')}>Shop liên kết</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              </Container>
+            </Navbar>
           </div>
           <div className={styles.rightArea}>
-            <div className={styles.menuItem} onClick={() => router.push('/')} role="presentation">
-              <div className="d-flex align-items-center">
-                <Image
-                  src="/assets/home.png"
-                  alt="header_menu_item_home"
-                  width={24}
-                  height={24}
-                />
-              </div>
-              <p className={styles.homeText}>Trang chủ</p>
-            </div>
-            <div className={styles.menuItem} onClick={() => router.push('/website')} role="presentation">
-              <div className="d-flex align-items-center">
-                <Image
-                  src="/assets/product.png"
-                  alt="header_menu_item_home"
-                  width={24}
-                  height={24}
-                />
-              </div>
-              <p className={styles.product}>Website</p>
-            </div>
-            <div className={styles.menuItem} onClick={() => router.push('/shop')} role="presentation">
-              <div>{favoriteGrayIcon}</div>
-              <p className={styles.product}>Shop</p>
-            </div>
-            {/* <div className={`${styles.menuItem} me-2`} onClick={() => router.push('/order')} role="presentation">
-              <div className="d-flex align-items-center">
-                <Image
-                  src="/assets/user.png"
-                  alt="header_menu_item_home"
-                  width={24}
-                  height={24}
-                />
-              </div>
-              <p className={styles.product}>Tui</p>
-            </div>
-            <div className="d-flex align-items-center">
-              <div className={styles.cart}>
-                <div className={styles.cartIcon} onClick={() => router.push(`${!userInfo.id ? '/' : '/cart'}`)} role="presentation">
-                  <Image
-                    src="/assets/cart.png"
-                    alt="header_menu_item_home"
-                    width={24}
-                    height={24}
-                  />
-                  <span className={styles.qtyCart}>9</span>
-                </div>
-                <div className={isShowNoti === 'true' ? `${styles.cartNotification}` : `${styles.hiddenBtnViewCart}`}>
-                  <div className={styles.btnClose} onClick={() => router.push(`/product/${router.query.id}?isShowNoti=false`)} role="presentation">{closeIcon}</div>
-                  <div className={styles.status}>
-                    {checkGreenIcon1}
-                    Thêm vào giỏ hàng thành công!
-                  </div>
-                  <div className={styles.btnViewCart} onClick={() => router.push('/cart?isShowNoti=false')} role="presentation">Xem giỏ hàng và thanh toán</div>
-                </div>
-              </div>
-            </div> */}
+
           </div>
         </div>
-        {/* <div className={styles.quickLink}>
-          <p className={styles.quickLinkItem} onClick={() => router.push(`/product?searchInput=áo ấm nam`)} role="presentation">áo ấm nam</p>
-          <p className={styles.quickLinkItem}>áo khoác nam</p>
-          <p className={styles.quickLinkItem}>áo khoác</p>
-          <p className={styles.quickLinkItem}>áo ấm</p>
-          <p className={styles.quickLinkItem}>áo mùa đông</p>
-          <p className={styles.quickLinkItem}>áo dạ nam</p>
-        </div> */}
+
       </header>
     </>
   );

@@ -7,7 +7,6 @@ import { BannerType } from '@/models/banner';
 import CustomLoading from '../components/molecules/CustomLoading';
 import { homeApiManagement } from '../api-clients/home';
 import { ProductOverviewType } from '@/models/product';
-import { CartApiManagement } from '../api-clients/cart';
 import CustomContainer from '../components/molecules/CustomContainer';
 import BreadCrumb from '../components/molecules/BreadCrumb';
 import { NextPageWithLayout } from './_app';
@@ -45,27 +44,7 @@ const Home: NextPageWithLayout = () => {
     ]
   };
 
-  useEffect(() => {
-    let userInfo: { id: string; };
-    if (typeof window !== 'undefined') {
-      userInfo = JSON.parse(localStorage.getItem('user-info') || '[]');
-    } else return;
-    homeApiManagement.getAllProduct(userInfo.id && userInfo.id || '').then((res) => {
-      setProductList(res.data.allProducts.content);
-      setTopBuyList(res.data.topBuy);
-      setPageCount(res.data.allProducts.totalElements);
-    }).catch(err => console.log(err));
-  }, [currentPage]);
 
-  useEffect(() => {
-    let userInfo: { id: string; };
-    if (typeof window !== 'undefined') {
-      userInfo = JSON.parse(localStorage.getItem('user-info') || '[]');
-    } else return;
-    CartApiManagement.getCartDetail(userInfo.id).then((res) => {
-      localStorage.setItem('total-cart', res.data.cartDetail.cartItems.length || '');
-    }).catch(err => console.log(err));
-  }, []);
 
   return (
     <CustomContainer size="medium">
